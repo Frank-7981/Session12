@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>bai tap 2</title>
+</head>
+
+<body>
+    <script>
+        /*
+        Cho người dùng nhập vào 1 chuỗi.
+        in ra chuỗi có độ dài lớn nhất gồm các phần tử không trùng nhau.
+        vd:
+        input  : "bcdbef"  output : "cdbef" "b","bc","bcd",..."bcdbef","c","cd","cdb"...
+        input  : "aaaca"   output : "ac"
+        input  : "aaaaa"   output : "a"
+        input  : "aabbacc" output : "bac"
+ */
+        function chuoiKyTuCanTim(chuoi) {
+            let bienTam = '';
+            let ketQua = '';
+            for (let i = 0; i < chuoi.length; i++) {
+                let viTriKyTuTrungNhau = chuoi[i];
+
+                if (bienTam.includes(viTriKyTuTrungNhau)) {
+                    let viTriIndex = bienTam.indexOf(viTriKyTuTrungNhau);
+                    bienTam = viTriKyTuTrungNhau.slice(viTriIndex + 1);
+                }
+                bienTam += viTriKyTuTrungNhau;
+
+                if (bienTam.length > ketQua.length) {
+                    ketQua = bienTam;
+                }
+            }
+            return ketQua;
+        }
+        let inputStr = prompt(" Hãy nhập vào 1 chuỗi ký tự");
+        console.log("Chuỗi đã nhập là:" + inputStr);
+        console.log("Chuỗi có độ dài lớn nhất gồm các phần tử không trùng nhau là: " + chuoiKyTuCanTim(inputStr));
+
+        /* bài tham khảo:
+        let string = prompt('Hãy nhập chuỗi cần kiểm tra')
+        let fixString = '';
+        let maxString = '';
+        let kiemTra = (inputString) => {
+            for (let i = 0; i < inputString.length; i++) {
+                let a = string[i];
+                if (fixString.includes(a)) {
+                    fixString = fixString.slice(fixString.indexOf(a) + 1)
+                }
+                fixString += a;
+                if (fixString.length > maxString.length) {
+                    maxString = fixString;
+                }
+            }
+            return maxString;
+        }
+
+        console.log(kiemTra(string)); */
+
+    </script>
+</body>
+
+</html>
